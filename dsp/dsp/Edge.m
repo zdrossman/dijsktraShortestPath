@@ -10,4 +10,14 @@
 
 @implementation Edge
 
+- (instancetype)initWithEdgeString:(NSString *)edgeString
+{
+    self = [super init];
+    if (self) {
+        self.endPoint = [[edgeString substringToIndex:[edgeString rangeOfString:@","].location - 1] integerValue];
+        self.distanceFromStart = [[edgeString substringFromIndex:[edgeString rangeOfString:@","].location + 1] integerValue];
+    }
+    return self;
+}
+
 @end

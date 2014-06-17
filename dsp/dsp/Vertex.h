@@ -14,4 +14,6 @@
 @property (nonatomic) NSInteger node;
 @property (strong, nonatomic) NSArray *edges;
 
+-(instancetype)initWithDataString:(NSString *)dataString;
+
 @end

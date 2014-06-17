@@ -13,4 +13,6 @@
 @property (nonatomic) NSInteger endPoint;
 @property (nonatomic) NSInteger distanceFromStart;
 
+- (instancetype)initWithEdgeString:(NSString *)string;
+
 @end

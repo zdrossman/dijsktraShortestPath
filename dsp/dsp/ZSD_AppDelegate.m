@@ -30,31 +30,8 @@
         {
             if (![dataString isEqualToString:@""])
             {
-            Vertex *vertex = [[Vertex alloc] init];
-            
-            vertex.node = [[dataString substringToIndex:[dataString rangeOfString:@","].location] integerValue];
-            
-            NSString *newDataString = [dataString substringFromIndex:[dataString rangeOfString:@"\t"].location + 1];
-            
-            NSArray *roughEdges = [newDataString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            
-            NSMutableArray *smoothEdges = [[NSMutableArray alloc] initWithCapacity:20];
-            
-            for (NSString *edgeString in roughEdges)
-            {
-               if (![edgeString isEqualToString:@""])
-               {
-                Edge *edge = [[Edge alloc] init];
-                edge.endPoint = [[edgeString substringToIndex:[edgeString rangeOfString:@","].location - 1] integerValue];
-                edge.distanceFromStart = [[edgeString substringFromIndex:[edgeString rangeOfString:@","].location + 1] integerValue];
-                
-                [smoothEdges addObject:edge];
-               }
-            }
-            
-            vertex.edges = smoothEdges;
-            
-            [self.vertices addObject:vertex];
+                Vertex *vertex = [[Vertex alloc] initWithDataString:dataString];
+                [self.vertices addObject:vertex];
             }
         }
     }

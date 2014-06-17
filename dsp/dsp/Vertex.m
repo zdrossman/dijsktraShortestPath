@@ -24,12 +24,22 @@
     {
         self.node = [[dataString substringToIndex:[dataString rangeOfString:@","].location] integerValue];
         
+        NSString *newDataString = [dataString substringFromIndex:[dataString rangeOfString:@"\t"].location + 1];
+
         NSArray *roughEdges = [newDataString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
-        for
-
-        NSString *newDataString = [dataString substringFromIndex:[dataString rangeOfString:@"\t"].location + 1];
+        NSMutableArray *smoothEdges = [[NSMutableArray alloc] initWithCapacity:20];
         
+        for (NSString *edgeString in roughEdges)
+        {
+            if (![edgeString isEqualToString:@""])
+            {
+                Edge *edge = [[Edge alloc] initWithEdgeString:edgeString];
+                [smoothEdges addObject:edge];
+            }
+        }
+        
+        self.edges = smoothEdges;
         
     }
     return self;
